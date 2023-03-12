@@ -52,9 +52,9 @@ def callPreList(list_pre):
 
 
 if __name__ == '__main__':
-    # sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-    # str = argv[1]
-    str = "[教得太好了，所值，真心不错, 这种货色就这样吧，别期待怎样。, 什么教学态度啊，出了事情一个推一个，作业麻烦还有考试, 很满意，教得很好，思路也很清晰。]"
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    str = argv[1]
+    # str = "[教得太好了，所值，真心不错, 这种货色就这样吧，别期待怎样。, 什么教学态度啊，出了事情一个推一个，作业麻烦还有考试, 很满意，教得很好，思路也很清晰。]"
     str = str.strip('[')
     str = str.strip(']')
     str2list = str.split(", ")
