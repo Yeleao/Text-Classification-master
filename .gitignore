@@ -36,5 +36,8 @@ data/demo_score/~$data.xlsx
 creat_data/config.py
 creat_data/try - 副本.py
 demo_score - 副本.py
+data
 *.xml
 *.xml
+*.pkl
+*.npz
