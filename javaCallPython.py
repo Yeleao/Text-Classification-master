@@ -34,9 +34,9 @@ def callPre(str):
 
 
 if __name__ == '__main__':
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-    str = argv[1]
-    # str = "[我觉得不行，太垃圾了，建议别上, 我觉得可以，不过建议再多准备, 有些无聊，建议多讲些故事, 挺有趣的，就是知识太少了，没什么用]"
+    # sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    # str = argv[1]
+    str = "[我觉得不行，太垃圾了，建议别上, 我觉得可以，不过建议再多准备, 有些无聊，建议多讲些故事, 挺有趣的，就是知识太少了，没什么用]"
     str = str.strip('[')
     str = str.strip(']')
     str2list = str.split(", ")
