@@ -7,7 +7,7 @@ from itertools import accumulate
 my_font = font_manager.FontProperties(fname="E:/Graduate/Codes/Text-Classification-master/筑紫B丸ゴシック by 宁静之雨.ttf")
 
 # 统计句子长度及长度出现的频数
-df = pd.read_csv("../../Data/corpus.csv")
+df = pd.read_csv("../Data/corpus.csv")
 print(df.groupby('label')['label'].count())
 
 df['length'] = df['evaluation'].apply(lambda x: len(x))

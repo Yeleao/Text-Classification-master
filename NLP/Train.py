@@ -27,11 +27,11 @@ def load_data(filepath_load, input_shape_load=20):
 
     # 字典列表
     word_dictionary = {word: i+1 for i, word in enumerate(vocabulary)}
-    with open('../../Model/word_dict.pk', 'wb') as f:
+    with open('../Model/word_dict.pk', 'wb') as f:
         pickle.dump(word_dictionary, f)
     inverse_word_dictionary = {i+1: word for i, word in enumerate(vocabulary)}
     label_dictionary = {label: i for i, label in enumerate(labels)}
-    with open('../../Model/label_dict.pk', 'wb') as f:
+    with open('../Model/label_dict.pk', 'wb') as f:
         pickle.dump(label_dictionary, f)
     output_dictionary = {i: labels for i, labels in enumerate(labels)}
 
@@ -101,7 +101,7 @@ def model_train(input_shape_train, filepath_train, model_save_path_train):
 
 
 if __name__ == '__main__':
-    filepath = '../../Data/corpus.csv'
+    filepath = '../Data/corpus.csv'
     input_shape = 180
-    model_save_path = '../../Model/corpus_model.h5'
+    model_save_path = '../Model/corpus_model.h5'
     model_train(input_shape, filepath, model_save_path)

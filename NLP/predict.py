@@ -11,12 +11,12 @@ from keras.utils import pad_sequences
 
 def callPreList(list_pre):
     # 导入字典
-    with open('../../Model/word_dict.pk', 'rb') as f:
+    with open('../Model/word_dict.pk', 'rb') as f:
         word_dictionary = pickle.load(f)
-    with open('../../Model/label_dict.pk', 'rb') as f:
+    with open('../Model/label_dict.pk', 'rb') as f:
         output_dictionary = pickle.load(f)
     # 载入模型
-    model_save_path = '../../Model/corpus_model.h5'
+    model_save_path = '../Model/corpus_model.h5'
     lstm_model = load_model(model_save_path)
 
     input_shape = 180
