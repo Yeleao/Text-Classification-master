@@ -31,7 +31,7 @@ plt.plot(sent_length, sent_pentage_list)
 
 # 寻找分位点为quantile的句子长度
 quantile = 0.91
-#print(list(sent_pentage_list))
+# print(list(sent_pentage_list))
 for length, per in zip(sent_length, sent_pentage_list):
     if round(per, 2) == quantile:
         index = length

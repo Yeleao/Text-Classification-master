@@ -6,7 +6,7 @@ import numpy as np
 jieba.setLogLevel('WARN')
 
 
-class DataPreprocess():
+class DataPreprocess:
     def __init__(self, tokenizer=None,
                  label_set=None):
         self.tokenizer = tokenizer
@@ -50,7 +50,7 @@ class DataPreprocess():
                  texts_cut,
                  sentence_len=30):
         """
-        文本转序列，用于神经网络的ebedding层输入。
+        文本转序列，用于神经网络的embedding层输入。
         :param texts_cut: 分词后的文本列表
         :param sentence_len: 文本转序列保留长度
         :return:sequence list
@@ -67,11 +67,11 @@ class DataPreprocess():
         return texts_pad_seq
 
     def creat_label_set(self, labels):
-        '''
+        """
         获取标签集合，用于one-hot
         :param labels: 原始标签集
         :return:
-        '''
+        """
         label_set = set()
         for i in labels:
             label_set = label_set.union(set(i))
@@ -79,23 +79,23 @@ class DataPreprocess():
         self.label_set = np.array(list(label_set))
 
     def creat_label(self, label):
-        '''
+        """
         构建标签one-hot
         :param label: 原始标签
         :return: 标签one-hot形式的array
         eg. creat_label(label=data_valid_accusations[12], label_set=accusations_set)
-        '''
+        """
         label_set = self.label_set
         label_zero = np.zeros(len(label_set))
         label_zero[np.in1d(label_set, label)] = 1
         return label_zero
 
     def creat_labels(self, labels=None):
-        '''
+        """
         调用creat_label遍历标签列表生成one-hot二维数组
-        :param label: 原始标签集
+        :param labels: 原始标签集
         :return:
-        '''
+        """
         label_set = self.label_set
         labels_one_hot = [self.creat_label(label) for label in labels]
 

@@ -4,8 +4,8 @@ import os
 
 localpath = os.path.dirname(__file__)
 
-
 def load_data(data_type='single'):
+
     if data_type == 'single':
         data = pd.read_csv(localpath + "/data/data_single.csv", encoding='utf8')
     elif data_type == 'multiple':

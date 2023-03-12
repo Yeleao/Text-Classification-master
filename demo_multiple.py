@@ -31,7 +31,7 @@ with open('./%s.pkl' % data_type, 'wb') as f:
 
 # 导入刚才保存的模型
 with open('./%s.pkl' % data_type, 'rb') as f:
-    clf = pickle.load(f)
+    clf = pickle
 y_predict = clf.predict(x_test)
 y_predict = clf.label2tag(y_predict, clf.preprocess.label_set)
 score = sum([y_predict[i] == y_test[i] for i in range(len(y_predict))]) / len(y_predict)

@@ -2,7 +2,35 @@ from .DataPreprocess import DataPreprocess
 from .net import CNN
 
 
-class TextClassification():
+def label2toptag(predictions, labelset):
+    labels = []
+    for prediction in predictions:
+        label = labelset[prediction == prediction.max()]
+        labels.append(label.tolist())
+    return labels
+
+
+def label2half(predictions, labelset):
+    labels = []
+    for prediction in predictions:
+        label = labelset[prediction > 0.5]
+        labels.append(label.tolist())
+    return labels
+
+
+def label2tag(predictions, labelset):
+    labels1 = label2toptag(predictions, labelset)
+    labels2 = label2half(predictions, labelset)
+    labels = []
+    for i in range(len(predictions)):
+        if len(labels2[i]) == 0:
+            labels.append(labels1[i])
+        else:
+            labels.append(labels2[i])
+    return labels
+
+
+class TextClassification:
     def __init__(self):
         self.preprocess = None
         self.model = None
@@ -48,28 +76,3 @@ class TextClassification():
         texts_seq = preprocess.text2seq(texts_cut, sentence_len)
 
         return self.model.predict(texts_seq)
-
-    def label2toptag(self, predictions, labelset):
-        labels = []
-        for prediction in predictions:
-            label = labelset[prediction == prediction.max()]
-            labels.append(label.tolist())
-        return labels
-
-    def label2half(self, predictions, labelset):
-        labels = []
-        for prediction in predictions:
-            label = labelset[prediction > 0.5]
-            labels.append(label.tolist())
-        return labels
-
-    def label2tag(self, predictions, labelset):
-        labels1 = self.label2toptag(predictions, labelset)
-        labels2 = self.label2half(predictions, labelset)
-        labels = []
-        for i in range(len(predictions)):
-            if len(labels2[i]) == 0:
-                labels.append(labels1[i])
-            else:
-                labels.append(labels2[i])
-        return labels
