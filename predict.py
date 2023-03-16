@@ -33,8 +33,8 @@ def callPre(string):
         # 模型预测
         y_predict = lstm_model.predict(x)
         label_dict = {v: k for k, v in output_dictionary.items()}
-        print('输入语句: %s' % sent)
-        print('情感预测结果: %s' % label_dict[np.argmax(y_predict)])
+        # print('输入语句: %s' % sent)
+        print('%s' % label_dict[np.argmax(y_predict)])
 
     except KeyError as err:
         print("您输入的句子有汉字不在词汇表中，请重新输入！")
