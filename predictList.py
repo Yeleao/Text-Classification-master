@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import io
-# Import the necessary modules
 import pickle
 import sys
 from sys import argv
@@ -12,14 +11,27 @@ from keras.utils import pad_sequences
 
 def callPreList(list_pre):
     # 导入字典
-    with open('../Model/word_dict.pk', 'rb') as f:
+    word_path = 'E:\Graduate\Codes\Text-Classification\Model\word_dict.pk'
+    output_path = 'E:\Graduate\Codes\Text-Classification\Model\label_dict.pk'
+    model_path = 'E:\Graduate\Codes\Text-Classification\Model\corpus_model.h5'
+    with open(word_path, 'rb') as f:
         word_dictionary = pickle.load(f)
-    with open('../Model/label_dict.pk', 'rb') as f:
+        # try:
+        #     word_dictionary = pickle.load(f)
+        # except KeyboardInterrupt:
+        #     print("quit")
+        # except Exception as ex:
+        #     print("出现如下异常%s" % ex)
+    with open(output_path, 'rb') as f:
         output_dictionary = pickle.load(f)
+        # try:
+        #     output_dictionary = pickle.load(f)
+        # except KeyboardInterrupt:
+        #     print("quit")
+        # except Exception as ex:
+        #     print("出现如下异常%s" % ex)
     # 载入模型
-    model_save_path = '../Model/corpus_model.h5'
-    lstm_model = load_model(model_save_path)
-
+    lstm_model = load_model(model_path)
     input_shape = 180
     for i in list_pre:
         try:
@@ -31,8 +43,8 @@ def callPreList(list_pre):
             # 模型预测
             y_predict = lstm_model.predict(x)
             label_dict = {v: k for k, v in output_dictionary.items()}
-            print('输入语句: %s' % sent)
-            print('情感预测结果: %s' % label_dict[np.argmax(y_predict)])
+            print(sent)
+            print(label_dict[np.argmax(y_predict)])
 
         except KeyError as err:
             print("您输入的句子有汉字不在词汇表中，请重新输入！")
@@ -40,12 +52,9 @@ def callPreList(list_pre):
 
 
 if __name__ == '__main__':
-    print("开始调用python")
-    # str2 = "[我觉得不行，太垃圾了，建议别上, 我觉得可以，不过建议再多准备, 有些无聊，建议多讲些故事, 挺有趣的，就是知识太少了，没什么用]"
-    # str1 = "[教得太好了，让人想学习更多知识, 太垃圾了，建议别上, 学到了很多知识，但是有点无聊, 还行吧，比较无聊]"
-    # str = "[物超所值，真心不错, 很大很好，方便安装！, 这种货色就这样吧，别期待怎样。, 京东服务很好！但我买的这款电视两天后就出现这样的问题，很后悔买了这样的电视]"
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     str = argv[1]
+    # str = "[教得太好了，所值，真心不错, 这种货色就这样吧，别期待怎样。, 什么教学态度啊，出了事情一个推一个，作业麻烦还有考试, 很满意，教得很好，思路也很清晰。]"
     str = str.strip('[')
     str = str.strip(']')
     str2list = str.split(", ")
