@@ -4,23 +4,23 @@ from matplotlib import font_manager
 from itertools import accumulate
 
 # 设置matplotlib绘图时的字体
-my_font = font_manager.FontProperties(fname="E:/Graduate/Codes/Text-Classification-master/筑紫B丸ゴシック by 宁静之雨.ttf")
+my_font = font_manager.FontProperties(fname="E:/Graduate/Codes/Text-Classification/筑紫B丸ゴシック by 宁静之雨.ttf")
 
 # 统计句子长度及长度出现的频数
-df = pd.read_csv("../Data/corpus.csv")
+df = pd.read_csv("../Data/ch_auto.csv")
 print(df.groupby('label')['label'].count())
 
-df['length'] = df['evaluation'].apply(lambda x: len(x))
+df['length'] = df['text'].apply(lambda x: len(x))
 len_df = df.groupby('length').count()
 sent_length = len_df.index.tolist()
-sent_freq = len_df['evaluation'].tolist()
+sent_freq = len_df['text'].tolist()
 
 # 绘制句子长度及出现频数统计图
 plt.bar(sent_length, sent_freq)
 plt.title("句子长度及出现频数统计图", fontproperties=my_font)
 plt.xlabel("句子长度", fontproperties=my_font)
 plt.ylabel("句子长度出现的频数", fontproperties=my_font)
-plt.savefig("./句子长度及出现频数统计图.png")
+plt.savefig("./句子长度及出现频数统计图2.png")
 plt.close()
 
 # 绘制句子长度累积分布函数(CDF)
@@ -47,5 +47,5 @@ plt.text(index, 0, str(index))
 plt.title("句子长度累积分布函数图", fontproperties=my_font)
 plt.xlabel("句子长度", fontproperties=my_font)
 plt.ylabel("句子长度累积频率", fontproperties=my_font)
-plt.savefig("./句子长度累积分布函数图.png")
+plt.savefig("./句子长度累积分布函数图2.png")
 plt.close()

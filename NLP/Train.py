@@ -16,7 +16,7 @@ def load_data(filepath_load, input_shape_load=20):
     df = pd.read_csv(filepath_load)
 
     # 标签及词汇表
-    labels, vocabulary = list(df['label'].unique()), list(df['evaluation'].unique())
+    labels, vocabulary = list(df['label'].unique()), list(df['text'].unique())
 
     # 构造字符级别的特征
     string = ''
@@ -39,7 +39,7 @@ def load_data(filepath_load, input_shape_load=20):
     label_size = len(label_dictionary.keys())  # 标签类别数量
 
     # 序列填充，按input_shape填充，长度不足的按0补充
-    x = [[word_dictionary[word] for word in sent] for sent in df['evaluation']]
+    x = [[word_dictionary[word] for word in sent] for sent in df['text']]
     x = pad_sequences(maxlen=input_shape_load, sequences=x, padding='post', value=0)
     y = [[label_dictionary[sent]] for sent in df['label']]
     y = [np_utils.to_categorical(label, num_classes=label_size) for label in y]
@@ -101,7 +101,7 @@ def model_train(input_shape_train, filepath_train, model_save_path_train):
 
 
 if __name__ == '__main__':
-    filepath = '../Data/corpus.csv'
+    filepath = '../Data/ch_auto.csv'
     input_shape = 180
-    model_save_path = '../Model/corpus_model.h5'
+    model_save_path = '../Model/ch_auto2.h5'
     model_train(input_shape, filepath, model_save_path)
