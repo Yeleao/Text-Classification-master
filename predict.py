@@ -27,7 +27,7 @@ def callPre(string):
         x = pad_sequences(maxlen=input_shape, sequences=x, padding='post', value=0)
 
         # 载入模型
-        model_save_path = 'E:\Graduate\Codes\Text-Classification\Model\corpus_model.h5'
+        model_save_path = 'E:\Graduate\Codes\Text-Classification\Model\ch_auto2.h5'
         lstm_model = load_model(model_save_path)
 
         # 模型预测

@@ -43,10 +43,10 @@ if __name__ == '__main__':
     print("开始调用python")
     # str2 = "[我觉得不行，太垃圾了，建议别上, 我觉得可以，不过建议再多准备, 有些无聊，建议多讲些故事, 挺有趣的，就是知识太少了，没什么用]"
     # str1 = "[教得太好了，让人想学习更多知识, 太垃圾了，建议别上, 学到了很多知识，但是有点无聊, 还行吧，比较无聊]"
-    # str = "[物超所值，真心不错, 很大很好，方便安装！, 这种货色就这样吧，别期待怎样。, 京东服务很好！但我买的这款电视两天后就出现这样的问题，很后悔买了这样的电视]"
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-    str = argv[1]
-    str = str.strip('[')
-    str = str.strip(']')
+    str = "[物超所值，真心不错, 很大很好，方便安装！, 这种货色就这样吧，别期待怎样。, 京东服务很好！但我买的这款电视两天后就出现这样的问题，很后悔买了这样的电视]"
+    # sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    # str = argv[1]
+    # str = str.strip('[')
+    # str = str.strip(']')
     str2list = str.split(", ")
     callPreList(str2list)
