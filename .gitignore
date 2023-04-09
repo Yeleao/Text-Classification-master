@@ -33,10 +33,14 @@ testdata/6000document/20180126/~$update_v1.xlsx
 
 .idea/Text-Classification.iml
 data/demo_score/~$data.xlsx
+t5-v1_1-small-chinese-cluecorpussmall
 creat_data/config.py
 creat_data/try - 副本.py
 demo_score - 副本.py
 data
+chisum2
+Model
+train.pth
 modules
 *.xml
 *.xml
