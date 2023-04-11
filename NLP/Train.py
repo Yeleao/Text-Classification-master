@@ -58,7 +58,7 @@ def create_LSTM(n_units, input_shape_lstm, output_dim, filepath_lstm):
     model.add(Dense(label_size, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-    plot_model(model, to_file='./model_lstm.png', show_shapes=True)
+    plot_model(model, to_file='../picture/model_lstm.png', show_shapes=True)
     model.summary()
 
     return model

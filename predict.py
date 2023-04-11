@@ -42,7 +42,7 @@ def callPre(string):
 
 
 if __name__ == '__main__':
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-    str = argv[1]
-    # str = "这种货色就这样吧，别期待怎样。"
+    # sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    # str = argv[1]
+    str = "这种货色就这样吧，别期待怎样。"
     callPre(str)
