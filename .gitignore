@@ -46,3 +46,5 @@ modules
 *.xml
 *.pkl
 *.npz
+*.pk
+*.h5
